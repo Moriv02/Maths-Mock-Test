@@ -1,0 +1,100 @@
+<header>
+  <img src="assets/logo.png" alt="Moriv Logo" class="logo">
+  <h1>Moriv Mock Test Portal</h1>
+</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Result - Moriv CUET Mock</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .result-container {
+      max-width: 600px;
+      margin: 80px auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .result-container h1 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+    .result-box {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      padding: 1rem;
+      background-color: #f1f5f9;
+      border-radius: 10px;
+    }
+    .analysis {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #e0f7fa;
+      border-left: 5px solid #06b6d4;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .btn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #0f766e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background-color: #115e59;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <h1>Test Result</h1>
+    <div class="result-box">
+      <p><strong>Total Questions:</strong> <span id="total-questions">50</span></p>
+      <p><strong>Correct Answers:</strong> <span id="correct-answers"></span></p>
+      <p><strong>Incorrect Answers:</strong> <span id="wrong-answers"></span></p>
+      <p><strong>Score:</strong> <span id="score"></span> / 250</p>
+    </div>
+    <div class="analysis" id="analysis">
+      <!-- Auto-generated insights here -->
+    </div>
+    <a href="index.html" class="btn">Back to Home</a>
+  </div>
+
+  <script>
+    const score = localStorage.getItem("score") || 0;
+    const correct = localStorage.getItem("correct") || 0;
+    const wrong = localStorage.getItem("wrong") || 0;
+
+    document.getElementById("correct-answers").innerText = correct;
+    document.getElementById("wrong-answers").innerText = wrong;
+    document.getElementById("score").innerText = score;
+
+    const analysis = document.getElementById("analysis");
+    const percentage = (score / 250) * 100;
+
+    let message = "";
+    if (percentage >= 90) {
+      message = "Outstanding performance! You're very well prepared.";
+    } else if (percentage >= 75) {
+      message = "Great job! Just a few areas to polish.";
+    } else if (percentage >= 50) {
+      message = "Decent attempt. Focus on your weak sections.";
+    } else {
+      message = "Needs improvement. Don’t give up!";
+    }
+
+    analysis.innerHTML = `<h3>Analysis:</h3><p>${message}</p>`;
+  </script>
+</body>
+</html>

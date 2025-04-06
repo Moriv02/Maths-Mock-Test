@@ -1,0 +1,45 @@
+<!-- index.html --><!DOCTYPE html><html lang="en">
+<header>
+  <img src="assets/logo.png" alt="Moriv Logo" class="logo">
+  <h1>Moriv Mock Test Portal</h1>
+</header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moriv CUET Mock Test</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+  <script src="firebase-config.js" defer></script>
+  <script src="questions.js" defer></script>
+  <script src="quiz.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Moriv Logo" class="logo" />
+    <div id="auth">
+      <h2>Welcome to Moriv CUET Portal</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="register()">Register</button>
+      <button onclick="login()">Login</button>
+      <p id="auth-message"></p>
+    </div><div id="quiz-section" style="display:none">
+  <div id="timer">Time Left: <span id="time">60:00</span></div>
+  <div id="question-box">
+    <h3 id="question">Loading...</h3>
+    <ul id="options"></ul>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+</div>
+
+<div id="result-section" style="display:none">
+  <h2>Test Completed!</h2>
+  <p id="score"></p>
+  <p id="analysis"></p>
+  <button onclick="location.reload()">Restart</button>
+</div>
+
+  </div>
+</body>
+</html>
